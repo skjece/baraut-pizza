@@ -1,0 +1,75 @@
+<mat-toolbar >
+
+  <div class='container'>
+
+      <!-- <a mat-button routerLink="" routerLinkActive="mat-accent">All Posts</a> -->
+
+      <a mat-button  routerLink="/" routerLinkActive="mat-accent">
+      <img  src="/assets/img/pizza.svg">
+      </a>
+
+    <span class="spacer"></span>
+    <ul>
+      <!-- <li *ngIf="isUserAuthenticated">
+        <a mat-button routerLink="create" routerLinkActive="mat-accent">Hi {{username}}</a>
+      </li> -->
+      <li>
+        <a routerLink="/cart" class='material-icons'>
+          <mat-icon  [matBadge]="'2'"  [matBadgeSize]="'medium'" [matBadgeColor]="'warn'">shopping_cart</mat-icon>
+        </a>
+      </li>
+
+
+        <!-- <mat-icon >home</mat-icon>
+        <mat-icon svgIcon="thumbs-up" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon> -->
+
+
+      <li *ngIf="!isUserAuthenticated">
+        <a  routerLink="/loginsignup" routerLinkActive="mat-accent" style='font-size: 1rem;'>Login</a>
+      </li>
+      <!-- <li *ngIf="!isUserAuthenticated">
+        <a mat-button routerLink="/signup" routerLinkActive="mat-accent">Signup</a>
+      </li> -->
+      <!-- <li *ngIf="isUserAuthenticated">
+        <button mat-button (click)="onLogout()">Logout</button>
+      </li> -->
+      <li>
+        <a *ngIf="isUserAuthenticated" class='material-icons' [matMenuTriggerFor]="menu" >
+          <!-- <span>Hi {{username}}</span> -->
+          <mat-icon  >account_circle</mat-icon>
+        </a>
+      </li>
+    </ul>
+
+
+
+    <mat-menu #menu="matMenu">
+
+      <a  style='font-weight: bolder;color:black;'  *ngIf="isUserAuthenticated" [disabled]='true' mat-menu-item>
+        <mat-icon  >face</mat-icon>
+        <span >Hi User</span>
+      </a>
+
+      <mat-divider></mat-divider>
+
+      <a  *ngIf="isUserAuthenticated" routerLink='/myorders' mat-menu-item>
+        <mat-icon >list_alt</mat-icon>
+        <span>My Orders</span>
+      </a>
+
+      <!-- <button  *ngIf="isUserAuthenticated"  mat-menu-item>
+        <mat-icon>dialpad</mat-icon>
+        <span>My Account</span>
+      </button> -->
+
+      <button  *ngIf="isUserAuthenticated"  mat-menu-item>
+        <mat-icon >power_settings_new</mat-icon>
+        <span>Logout</span>
+      </button>
+
+
+    </mat-menu>
+
+  </div>
+
+</mat-toolbar>
